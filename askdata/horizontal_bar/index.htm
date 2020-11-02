@@ -7,13 +7,24 @@
   <script src="./scripts/utils.js"></script>
   <script src="./scripts/env.js"></script>
   <script src="./scripts/jquery.min.js"></script>
-  <link href="./styles/" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="./styles/">
+  <link href="./styles/css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./styles/style.css">
 <script type="text/javascript">
-function getChartId(){
-var chartId = window.location.href.split('#')[1];
-return chartId;
-}</script>
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+</script>
 <style type="text/css">
 @font-face {
   font-weight: 400;
@@ -74,20 +85,23 @@ return chartId;
 
   src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-BlackItalic.woff2') format('woff2');
 }</style></head>
-<body onload="getChartId()">
+<body>
 <div id="watermark"><img src="./assets/askdata-logo.svg"></div>
 <div id="container">
-
 <canvas id="canvas"></canvas></div>
 <script>
+  
+  if (getUrlParameter('token') != undefined){
+  var token = getUrlParameter('token');
+  }else{
+  var token = Cookies.get('access_token')
+  }
 $.ajax({
-         url: environment + "/charts/" + getChartId(),
+         url: environment + "/charts/" + getUrlParameter('chartId'),
          type: "GET",
-         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + Cookies.get('access_token') 
+         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token 
           ).setRequestHeader('Content-Type','application/json')},
          success: function(data) { 
-          
-          
           console.log(data);
           //var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
           var MONTHS = [data.resultSet.dimension.labels];
