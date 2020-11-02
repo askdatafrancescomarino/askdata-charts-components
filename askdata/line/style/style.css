@@ -1,0 +1,48 @@
+ canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+  }
+
+  body {
+   font-family: 'Roboto', sans-serif;
+   margin:0;
+   font-weight: 200 !important;
+   padding:0;
+   background:#FFFFFF;
+  }
+
+#watermark {
+  	position: absolute;
+	 right: 0px;
+	 top: 12px;
+}
+
+#watermark img {
+    width: 120px;
+    height: 40px;
+    opacity: 0.3;
+}
+
+#container {
+  width: 100%;
+  min-height: 600px;
+}
+
+#title {
+  top: 14px;
+  left: 10px;
+  font-size:20px;
+  font-weight: 200 !important;
+  position: absolute;
+  font-family: 'Roboto', sans-serif;
+  width: calc(100% - 150px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#square {
+  top: 12px;
+  left: 0px;
+  position: absolute;
+}
