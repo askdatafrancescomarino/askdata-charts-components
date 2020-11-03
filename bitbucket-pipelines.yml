@@ -1,0 +1,46 @@
+# This is a sample build configuration for Docker.
+# Check our guides at https://confluence.atlassian.com/x/O1toN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: atlassian/default-image:2
+
+pipelines:
+  branches:
+    main:
+    - step:
+        name: app building askdata
+        deployment: test
+        script:
+          - export APP_NAME_NEW="chart"
+          - export NAMESPACE_NEW="askdata"
+          - export DEPLOYMENT_NEW="chart"
+          - export CONTAINER_NEW="chart"
+          - export IMAGE_NAME_NEW="eu.gcr.io/askdata/$APP_NAME_NEW:DEV-$BITBUCKET_COMMIT"
+
+          # build docker image
+          - docker build -t $IMAGE_NAME_NEW .
+          - docker login --username _json_key --password "$GCR_JSON_KEY_NEW" https://eu.gcr.io
+          # push docker image to Google Container Registry
+          - docker push $IMAGE_NAME_NEW
+          # install kubernetes
+          - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+          - chmod +x ./kubectl
+          - mv ./kubectl /usr/local/bin/kubectl
+          - ASKDATA_TOKEN=$(echo $ASKDATA_DEV_TOKEN | base64 --decode)
+          - echo $ASKDATA_DEV_CA | base64 --decode > ./kube_ca
+          - ASKDATA_CONTEXT="context-dev"
+          - ASKDATA_CLUSTER="backend-dev"
+
+          # Configure kubectl
+          - kubectl config set-cluster $ASKDATA_CLUSTER --server=https://$ASKDATA_DEV_URL --certificate-authority=./kube_ca
+          - kubectl config set-credentials bitbucket --token=$ASKDATA_TOKEN
+          - kubectl config set-context $ASKDATA_CONTEXT --cluster=$ASKDATA_CLUSTER --user=bitbucket
+          - kubectl config use-context $ASKDATA_CONTEXT
+          #Update the deployment to use the new Docker image
+          - kubectl set image deployment/$DEPLOYMENT_NEW $CONTAINER_NEW=$IMAGE_NAME_NEW -n $NAMESPACE_NEW
+
+        services:
+          - docker
+        caches:
+          - docker
