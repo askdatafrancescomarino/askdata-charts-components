@@ -1,50 +1,30 @@
-<!DOCTYPE html>
-<!-- saved from url=(0073)https://storage.googleapis.com/askdata-smartchart/prod/horizontal_bar.htm -->
-<html class="js-focus-visible" data-js-focus-visible="">
+<!doctype html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
   <title>Askdata - Horizontal Bar Chart</title>
-  <script src="/lib/scripts/Chart.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-  <script src="/lib/scripts/utils.js"></script>
-  <script src="/lib/scripts/env.js"></script>
-  <script src="/lib/scripts/jquery.min.js"></script>
-  <link href="/lib/styles/css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="/lib/styles/style.css">
+  <script src="../lib/Chart.min.js"></script>
+  <script src="../lib/jquery.min.js"></script>
+  <script src="../lib/utils.js"></script>
+  <script src="env.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="../lib/style.css">
+
 <script type="text/javascript">
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-        }
-    }
-};
-</script>
+function getChartId(){
+var chartId = window.location.href.split('#')[1];
+return chartId;
+}</script>
 </head>
-<body>
-<div id="watermark"><img src="/lib/assets/askdata-logo.svg"></div>
-<div id="container">
-<canvas id="canvas"></canvas></div>
+<body onload="getChartId()"><div id="container" style="width: 100%;min-height: 640px"><canvas id="canvas"></canvas></div>
 <script>
-  
-  if (getUrlParameter('token') != undefined){
-  var token = getUrlParameter('token');
-  }else{
-  var token = Cookies.get('access_token')
-  }
 $.ajax({
-         url: environment + "/charts/" + getUrlParameter('chartId'),
+         url: environment + "/charts/" + getChartId(),
          type: "GET",
-         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token 
+         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token
           ).setRequestHeader('Content-Type','application/json')},
          success: function(data) { 
+          
+          
           console.log(data);
           //var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
           var MONTHS = [data.resultSet.dimension.labels];
@@ -94,7 +74,7 @@ for(var i in data.resultSet.measures) {
 
       var ctx = document.getElementById('canvas').getContext('2d');
       window.myHorizontalBar = new Chart(ctx, {
-        type: 'horizontalBar',
+        type: 'line',
         data: horizontalBarChartData,
         options: {
           // Elements options apply to all of the options unless overridden in a dataset
@@ -112,13 +92,14 @@ for(var i in data.resultSet.measures) {
             align: 'center',
             fontSize:30,
             padding: 5,
+            labels: {
+            usePointStyle: true}
           },
+
           scales: {
 
-                        yAxes: [{ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily}}],
-                        xAxes: [{ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily,callback: function(value, index, values) {
-                        return new Intl.NumberFormat(labelNumberLocale).format(parseFloat(value).toFixed(labelNumberRoundTo));
-                    }}}]
+                        yAxes: [{stacked: true, ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily}}],
+                        xAxes: [{stacked: true, ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily}}]
                     },
           title: {
             display: true,
@@ -132,6 +113,5 @@ for(var i in data.resultSet.measures) {
 }
 });  
   </script>
-
 </body>
 </html>
