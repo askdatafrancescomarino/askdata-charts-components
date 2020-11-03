@@ -9,7 +9,7 @@
   <script src="/lib/scripts/env.js"></script>
   <script src="/lib/scripts/jquery.min.js"></script>
   <link href="/lib/styles/css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="./styles/style.css">
+  <link rel="stylesheet" type="text/css" href="/lib/styles/style.css">
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
@@ -18,11 +18,9 @@
 <div id="my_dataviz"></div>
 
 
-
-
 <script type="text/javascript">
 
-var getUrlParameter = function getUrlParameter(sParam) {
+	var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
         sParameterName,
@@ -36,8 +34,6 @@ var getUrlParameter = function getUrlParameter(sParam) {
         }
     }
 };
-
-<script>
 
 // set the dimensions and margins of the graph
 var margin = {top: 20, right: 30, bottom: 30, left: 60},
@@ -102,68 +98,9 @@ d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_data
 </script>
 
 </script>
-<style type="text/css">
-@font-face {
-  font-weight: 400;
-  font-style:  normal;
-  font-family: 'Inter-Loom';
-
-  src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-Regular.woff2') format('woff2');
-}
-@font-face {
-  font-weight: 400;
-  font-style:  italic;
-  font-family: 'Inter-Loom';
-
-  src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-Italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-weight: 500;
-  font-style:  normal;
-  font-family: 'Inter-Loom';
-
-  src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-Medium.woff2') format('woff2');
-}
-@font-face {
-  font-weight: 500;
-  font-style:  italic;
-  font-family: 'Inter-Loom';
-
-  src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-MediumItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-weight: 700;
-  font-style:  normal;
-  font-family: 'Inter-Loom';
-
-  src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-Bold.woff2') format('woff2');
-}
-@font-face {
-  font-weight: 700;
-  font-style:  italic;
-  font-family: 'Inter-Loom';
-
-  src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-BoldItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-weight: 900;
-  font-style:  normal;
-  font-family: 'Inter-Loom';
-
-  src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-Black.woff2') format('woff2');
-}
-@font-face {
-  font-weight: 900;
-  font-style:  italic;
-  font-family: 'Inter-Loom';
-
-  src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-BlackItalic.woff2') format('woff2');
-}</style></head>
+</head>
 <body>
-<div id="watermark"><img src="./assets/askdata-logo.svg"></div>
+<div id="watermark"><img src="/lib/assets/askdata-logo.svg"></div>
 <div id="container">
 <canvas id="canvas"></canvas></div>
 <script>
