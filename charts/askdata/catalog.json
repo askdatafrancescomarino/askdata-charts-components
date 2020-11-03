@@ -1,0 +1,21 @@
+{	
+	"charts": 
+	[
+		{
+			"code":"horizontal_bar", 
+			"name" : "Horizontal Bar",
+			"description" : "Horizontal Bar",
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"template" : "horizontal_bar"
+		},
+		{
+			"code": "donut", 
+			"name" : "Donut Bar",
+			"description" : "Horizontal Bar",
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"icon" : "donut",
+			"template" : "donut"
+		}
+	],
+	"base-url": "/charts/askdata"
+}

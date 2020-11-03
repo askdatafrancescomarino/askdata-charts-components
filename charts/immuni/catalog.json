@@ -1,0 +1,13 @@
+{	
+	"charts": 
+	[
+		{
+			"code":"cards", 
+			"name" : "Cards",
+			"description" : "Cards",
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-cards",
+			"icon" : ""
+		}
+	],
+	"base-url": "/charts/immuni-app"
+}
