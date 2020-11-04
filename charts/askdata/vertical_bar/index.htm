@@ -1,36 +1,23 @@
 <!DOCTYPE html>
 <!-- saved from url=(0073)https://storage.googleapis.com/askdata-smartchart/prod/horizontal_bar.htm -->
 <html class="js-focus-visible" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-  <title>Askdata - Line Chart</title>
-  <script src="/lib/scripts/Chart.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-  <script src="/lib/scripts/utils.js"></script>
-  <script src="/lib/scripts/env.js"></script>
-  <script src="/lib/scripts/jquery.min.js"></script>
-  <link href="/lib/styles/css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="/lib/styles/style.css">
-<script type="text/javascript">
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+  <title>Askdata - Vertical Bar</title>
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-        }
-    }
-};
-</script>
+  <!--# include file="./_includes/header.html" -->
+  
 </head>
 <body>
 <div id="watermark"><img src="/lib/assets/askdata-logo.svg"></div>
 <div id="container">
 <canvas id="canvas"></canvas></div>
 <script>
+  
+  if (getUrlParameter('token') != undefined){
+  var token = getUrlParameter('token');
+  }else{
+  var token = Cookies.get('access_token')
+  }
+
 $.ajax({
          url: environment + "/charts/" + getUrlParameter('chartId'),
          type: "GET",

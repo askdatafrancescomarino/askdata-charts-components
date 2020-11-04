@@ -4,6 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
   <title>Askdata - Horizontal Bar Chart</title>
+
   <script src="/lib/scripts/Chart.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script src="/lib/scripts/utils.js"></script>
@@ -39,6 +40,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
   }else{
   var token = Cookies.get('access_token')
   }
+
 $.ajax({
          url: environment + "/charts/" + getUrlParameter('chartId'),
          type: "GET",

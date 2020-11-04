@@ -31,6 +31,14 @@ var getUrlParameter = function getUrlParameter(sParam) {
 <div id="container">
   <canvas id="canvas"></canvas></div>
 <script>
+
+
+  if (getUrlParameter('token') != undefined){
+  var token = getUrlParameter('token');
+  }else{
+  var token = Cookies.get('access_token')
+  }
+
 $.ajax({
          url: environment + "/charts/" + getUrlParameter('chartId'),
          type: "GET",
