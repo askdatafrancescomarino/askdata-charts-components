@@ -2,28 +2,25 @@
 <html>
 <head>
   <title>Askdata - Donut Chart</title>
-  <script src="../lib/Chart.min.js"></script>
-  <script src="../lib/utils.js"></script>
-<script src="../lib/jquery.min.js"></script>
-  <script src="env.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="../lib/style.css">
+<!--# include virtual="/charts/askdata/_includes/header.html" -->
 
-<script type="text/javascript">
-function getChartId(){
-var chartId = window.location.href.split('#')[1];
-return chartId;
-}</script>
 </head>
 <body onload="getChartId()"><div id="container" style="width: 100%;min-height: 600px"><canvas id="canvas"></canvas></div>
 <script>
+
+  if (getUrlParameter('token') != undefined){
+  var token = getUrlParameter('token');
+  }else{
+  var token = Cookies.get('access_token')
+  }
+
+
 $.ajax({
          url: environment + "/charts/" + getChartId(),
          type: "GET",
          beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token
           ).setRequestHeader('Content-Type','application/json')},
          success: function(data) { 
-          
           
           console.log(data);
           //var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -72,7 +69,6 @@ for(var i in data.resultSet.measures) {
     var lebelNumberMeasurmenentUnit = null;
 
       var ctx = document.getElementById('canvas').getContext('2d');
-
 
 
       window.myHorizontalBar = new Chart(ctx, {
