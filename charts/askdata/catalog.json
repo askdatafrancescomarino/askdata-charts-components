@@ -5,17 +5,64 @@
 			"code":"horizontal_bar", 
 			"name" : "Horizontal Bar",
 			"description" : "Horizontal Bar",
-			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
-			"template" : "horizontal_bar"
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar"
 		},
 		{
 			"code": "donut", 
-			"name" : "Donut Bar",
+			"name" : "Donut Chart",
 			"description" : "Horizontal Bar",
 			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
-			"icon" : "donut",
-			"template" : "donut"
+			"icon" : "donut"
+		},
+		{
+			"code": "line", 
+			"name" : "Line Chart",
+			"description" : "Horizontal Bar",
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"icon" : "line"
+		},
+		{
+			"code": "stacked_area", 
+			"name" : "Stacked Area",
+			"description" : "Horizontal Bar",
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"icon" : "donut"
+		},
+		{
+			"code": "pie_chart", 
+			"name" : "Pie Chart",
+			"description" : "Horizontal Bar",
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"icon" : "donut"
+		},
+		{
+			"code": "stacked_horizontal", 
+			"name" : "Stacked Horizontal",
+			"description" : "Horizontal Bar",
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"icon" : "donut"
+		},
+		{
+			"code": "vertical_bar", 
+			"name" : "Vertical Bar",
+			"description" : "Horizontal Bar",
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"icon" : "donut"
+		},
+		{
+			"code": "stacked_vertical", 
+			"name" : "Stacked Vertical Bar",
+			"description" : "Horizontal Bar",
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"icon" : "donut"
+		},
+		{
+			"code": "streamgraph", 
+			"name" : "Stream Graph",
+			"description" : "Horizontal Bar",
+			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"icon" : "donut"
 		}
 	],
-	"base-url": "/charts/askdata"
+	"base_url": "/charts/askdata"
 }

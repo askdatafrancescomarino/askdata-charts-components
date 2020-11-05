@@ -17,10 +17,7 @@
 
 <div class="container bootstrap snipets">
    <h1 class="text-center text-muted">Askdata Charting Catalog</h1>
-   <div class="row flow-offset-1">
-     <div class="col-xs-6 col-md-4" id="parent">
-
-     </div>
+   <div class="row flow-offset-1" id="parent">
      
    </div>
  </div>
@@ -28,11 +25,12 @@
  <script>
     $(document).ready(function(){
         $.getJSON("catalog.json", function(data){
-            console.log(data); // Prints: Harry
+            console.log(data);
 
 
             $.each( data.charts, function( key, value ) {
-               $('#parent').append('<div class="product tumbnail thumbnail-3"><a href="#"><img src="https://via.placeholder.com/350x280/FFB6C1/000000" alt=""></a><div class="caption"><h6><a href="#">'+value.name +'</a></h6><span class="price"><del>$24.99</del></span><span class="price sale">$12.49</span></div></div>');
+               $('#parent').append('<div class="col-xs-6 col-md-4" ><div class="product tumbnail thumbnail-3"><a href="#"><img src="'+data.base_url+'/' + value.code+" alt=""></a><div class="caption"><h6><a href="#">'+value.name +'</a></h6></div></div></div>');
+
             });
 
         }).fail(function(){
