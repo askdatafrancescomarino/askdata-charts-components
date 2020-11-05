@@ -10,9 +10,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.14.0/js-yaml.js" integrity="sha512-BTCsK6anMeuJMZs95DlnUuvcq2qKJRev/Z/pbFiDccj4WlRz4mo7wn0G2pgSgGku4OymSGTTRW4BJoLvzP/2zw==" crossorigin="anonymous"></script>
 </head>
 <body>
-  <script>
 
-  </script>
+
+<script>
+    $(document).ready(function(){
+        $.getJSON("catalog.json", function(data){
+            console.log(data); // Prints: Harry
+        }).fail(function(){
+            console.log("An error has occurred.");
+        });
+    });
+    </script> 
+
+  
 
 <div class="container bootstrap snipets">
    <h1 class="text-center text-muted">Product catalog</h1>
