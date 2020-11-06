@@ -25,7 +25,7 @@
 
 
             $.each( data.charts, function( key, value ) {
-               $('#parent').append('<div class="col-xs-6 col-md-4" ><div class="product tumbnail thumbnail-3"><a href="'+data.base_url+'"><img src="'+data.base_url+'/' + value.icon+ '" alt=""></a><div class="caption"><h6><a href="#">'+value.name +'</a></h6></div></div></div>');
+               $('#parent').append('<div class="col-xs-6 col-md-4" ><div class="product tumbnail thumbnail-3"><a href="'+data.base_url+'/'+value.code+'/index.htm?chartId=5fa032b053ceb555c449ebc7"><img src="'+data.base_url+'/' + value.icon+ '" alt=""></a><div class="caption"><h6><a href="'+data.base_url+'/'+value.code+'/index.htm?chartId=5fa032b053ceb555c449ebc7">'+value.name +'</a></h6></div></div></div>');
 
             });
 
