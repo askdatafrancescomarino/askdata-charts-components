@@ -23,7 +23,7 @@ var theme = []
 if (getUrlParameter('theme')) {
 
 
-  $.getJSON( "https://chart-dev.askdata.com/charts/immuni-app/catalog.json", function( data ) {
+    $.getJSON( "https://chart-dev.askdata.com/charts/immuni-app/catalog.json", function( data ) {
     theme = data;
   })
 
@@ -42,7 +42,7 @@ $.ajax({
 var measures = [];
 for(var i in data.resultSet.measures) {  
     var item = data.resultSet.measures[i];
-    s
+    
     // Smarter chart
     // TODO / to be removed Set accent color as the first color
     
