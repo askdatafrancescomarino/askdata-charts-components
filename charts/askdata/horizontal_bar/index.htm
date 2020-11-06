@@ -52,10 +52,8 @@ for(var i in data.resultSet.measures) {
       item.color = theme.palette[i]
     } else {
       item.color = data.resultSet.color.palette[i];
+      if (i==0) {item.color = data.resultSet.color.accent; }
     }
-
-    if (i==0) {item.color = data.resultSet.color.accent; }
-
     
     measures.push({ 
         "label" : item.name,
