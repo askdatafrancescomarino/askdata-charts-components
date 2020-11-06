@@ -1,3 +1,4 @@
+#https://coolors.co/535af6-f7c143-ef7a85-709973-25ced1-a8b9f0-06d6a0-666666-acc1c3-404363
 {	
 	"charts": 
 	[
@@ -9,5 +10,7 @@
 			"icon" : ""
 		}
 	],
-	"base-url": "/charts/immuni-app"
+	"base-url": "/charts/immuni-app",
+	"palette" : ["#535af6","#f7c143","#ef7a85","#709973","#25ced1","#a8b9f0","#06d6a0","#666666","#acc1c3","#404363"]
 }
+
