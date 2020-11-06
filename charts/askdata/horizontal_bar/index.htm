@@ -24,7 +24,9 @@ var theme = []
 if (getUrlParameter('theme')) {
 
     $.getJSON( "https://chart-dev.askdata.com/charts/immuni-app/catalog.json", function( data ) {
-    window.theme = data;
+      console.log("retrieving theme")
+      console.log(data)
+      window.theme = data;
   })
 
 }
