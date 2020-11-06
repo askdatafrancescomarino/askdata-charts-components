@@ -18,6 +18,17 @@
   var token = Cookies.get('access_token')
   }
 
+
+var theme = []
+if (getUrlParameter('theme')) {
+
+
+  $.getJSON( "https://chart-dev.askdata.com/charts/immuni-app/catalog.json", function( data ) {
+    theme = data;
+  }
+
+}
+
 $.ajax({
          url: environment + "/charts/" + getUrlParameter('chartId'),
          type: "GET",
@@ -31,11 +42,16 @@ $.ajax({
 var measures = [];
 for(var i in data.resultSet.measures) {  
     var item = data.resultSet.measures[i];
-    
+    s
     // Smarter chart
     // TODO / to be removed Set accent color as the first color
     
-    item.color = data.resultSet.color.palette[i];
+    if (getUrlParameter('theme')) {
+      item.color = theme.palette[i]
+    } else {
+      item.color = data.resultSet.color.palette[i];
+    }
+
     if (i==0) {item.color = data.resultSet.color.accent; }
 
     
