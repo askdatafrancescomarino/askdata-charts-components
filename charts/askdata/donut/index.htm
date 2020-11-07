@@ -1,46 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Askdata - Donut Chart</title>
+<title>Askdata - Horizontal Bar Chart</title>
+<!-- Beginning Include Header -->
 <!--# include virtual="/charts/askdata/_includes/header.html" -->
-
+<!-- End Include Header -->
 </head>
-<body onload="getChartId()"><div id="container" style="width: 100%;min-height: 600px"><canvas id="canvas"></canvas></div>
+<body>
+<!-- Beginning Include Watermak -->
+<!--# include virtual="/charts/askdata/_includes/watermark.html" -->
+<!-- End Include Watermak -->
+
+<div id="container">
+  <canvas id="canvas"></canvas></div>
 <script>
 
-  if (getUrlParameter('token') != undefined){
-  var token = getUrlParameter('token');
-  }else{
-  var token = Cookies.get('access_token')
-  }
+function displayChart(data) {
+
+    console.log(data);
 
 
-$.ajax({
-         url: environment + "/charts/" + getChartId(),
-         type: "GET",
-         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token
-          ).setRequestHeader('Content-Type','application/json')},
-         success: function(data) { 
-          
-          console.log(data);
-          //var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-          var MONTHS = [data.resultSet.dimension.labels];
+    var MONTHS = [data.resultSet.dimension.labels];
     var color = Chart.helpers.color;
-var measures = [];
-for(var i in data.resultSet.measures) {  
-    var item = data.resultSet.measures[i];
+    var measures = [];
+    for(var i in data.resultSet.measures) {  
+        var item = data.resultSet.measures[i];
     
-    // Smarter chart
-    // TODO / to be removed Set accent color as the first color
-    //if (i==0) {item.color = data.resultSet.color.accent; }
-
+    // theme handling
+    if (theme.length > 0) {
+      item.color = theme.palette[i]
+    } else {
+      item.color = data.resultSet.color.palette[i];
+      if (i==0) {item.color = data.resultSet.color.accent; }
+    }
     
     measures.push({ 
         "label" : item.name,
         "data" : item.numericValues,
-        "backgroundColor": data.resultSet.color.palette,
-        
-        "borderWidth": 0
+        "backgroundColor": item.color,
+        "borderColor": item.color
     });
 
 }
@@ -53,7 +51,7 @@ for(var i in data.resultSet.measures) {
 
     }
 
-    var chartData = {
+    var horizontalBarChartData = {
       labels: data.resultSet.dimension.labels,
       datasets: measures,
     };
@@ -69,8 +67,6 @@ for(var i in data.resultSet.measures) {
     var lebelNumberMeasurmenentUnit = null;
 
       var ctx = document.getElementById('canvas').getContext('2d');
-
-
       window.myHorizontalBar = new Chart(ctx, {
         type: 'doughnut',
         data: chartData,
@@ -98,8 +94,14 @@ for(var i in data.resultSet.measures) {
         }
       });
     var colorNames = Object.keys(window.chartColors);
+
 }
-});  
-  </script>
+
+// Beinning include Request-data
+<!--# include virtual="/charts/askdata/_includes/request-data.js" -->
+// End include Request-data
+
+</script>
+
 </body>
 </html>
