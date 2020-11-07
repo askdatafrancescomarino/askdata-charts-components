@@ -26,14 +26,14 @@
 			"code": "stacked_area", 
 			"name" : "Stacked Area",
 			"description" : "Stacked Area",
-			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"doc" : "https://docs.askdata.com/docs/chart-stacked-area", 
 			"icon" : "_icons/IcoChartStackedArea.png"
 		},
 		{
-			"code": "pie_chart", 
+			"code": "pie", 
 			"name" : "Pie Chart",
 			"description" : "Pie Chart",
-			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
+			"doc" : "https://docs.askdata.com/docs/chart-pie-chart", 
 			"icon" : "_icons/IcoChartPie.png"
 		},
 		{
