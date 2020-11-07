@@ -1,51 +1,33 @@
 <!DOCTYPE html>
-<!-- saved from url=(0073)https://storage.googleapis.com/askdata-smartchart/prod/horizontal_bar.htm -->
-<html class="js-focus-visible" data-js-focus-visible="">
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-  <title>Askdata - Horizontal Bar Chart</title>
-  <!--# include virtual="/charts/askdata/_includes/header.html" -->
+<title>Askdata - Horizontal Bar Chart</title>
+<!-- Beginning Include Header -->
+<!--# include virtual="/charts/askdata/_includes/header.html" -->
+<!-- End Include Header -->
 </head>
 <body>
-<div id="watermark"><img src="/lib/assets/askdata-logo.svg"></div>
+<!-- Beginning Include Watermak -->
+<!--# include virtual="/charts/askdata/_includes/watermark.html" -->
+<!-- End Include Watermak -->
+
 <div id="container">
-<canvas id="canvas"></canvas></div>
+  <canvas id="canvas"></canvas></div>
 <script>
-  
-  if (getUrlParameter('token') != undefined){
-  var token = getUrlParameter('token');
-  }else{
-  var token = Cookies.get('access_token')
-  }
-
-var theme = []
-
-if (getUrlParameter('theme')) {
-
-    $.getJSON( "https://chart-dev.askdata.com/charts/immuni-app/catalog.json", function( data ) {
-      
-      console.log("retrieving theme")
-      console.log(data)
-      
-      window.theme = data;
-
-  })
-
-}
 
 function displayChart(data) {
 
-          console.log(data);
+    console.log(data);
 
 
-
-          var MONTHS = [data.resultSet.dimension.labels];
+    var MONTHS = [data.resultSet.dimension.labels];
     var color = Chart.helpers.color;
-var measures = [];
-for(var i in data.resultSet.measures) {  
-    var item = data.resultSet.measures[i];
+    var measures = [];
+    for(var i in data.resultSet.measures) {  
+        var item = data.resultSet.measures[i];
     
-    if (getUrlParameter('theme')) {
+    // theme handling
+    if (theme) {
       item.color = theme.palette[i]
     } else {
       item.color = data.resultSet.color.palette[i];
@@ -124,27 +106,11 @@ for(var i in data.resultSet.measures) {
 
 }
 
+// Beinning include Request-data
+<!--# include virtual="/charts/askdata/_includes/request-data.js" -->
+// End include Request-data
 
-$.ajax({
-         url: environment + "/charts/" + getUrlParameter('chartId'),
-         type: "GET",
-         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token 
-          ).setRequestHeader('Content-Type','application/json')},
-         success: function(data) { 
-
-         displayChart(data);
-
-}
-});  
-
-
-$( document ).ajaxError(function( event, jqxhr, settings, exception ) {
-    if ( jqxhr.status== 401 ) {
-      location.replace("https://app-dev.askdata.com/login");
-
-    }
-});
-  </script>
+</script>
 
 </body>
 </html>
