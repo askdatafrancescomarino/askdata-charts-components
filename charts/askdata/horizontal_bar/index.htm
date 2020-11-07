@@ -18,15 +18,17 @@
   var token = Cookies.get('access_token')
   }
 
-
 var theme = []
 
 if (getUrlParameter('theme')) {
 
     $.getJSON( "https://chart-dev.askdata.com/charts/immuni-app/catalog.json", function( data ) {
+      
       console.log("retrieving theme")
       console.log(data)
+      
       window.theme = data;
+
   })
 
 }
@@ -38,15 +40,12 @@ $.ajax({
           ).setRequestHeader('Content-Type','application/json')},
          success: function(data) { 
           console.log(data);
-          //var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
           var MONTHS = [data.resultSet.dimension.labels];
     var color = Chart.helpers.color;
 var measures = [];
 for(var i in data.resultSet.measures) {  
     var item = data.resultSet.measures[i];
-    
-    // Smarter chart
-    // TODO / to be removed Set accent color as the first color
     
     if (getUrlParameter('theme')) {
       item.color = theme.palette[i]
@@ -126,6 +125,13 @@ for(var i in data.resultSet.measures) {
     var colorNames = Object.keys(window.chartColors);
 }
 });  
+
+
+$( document ).ajaxError(function( event, jqxhr, settings, exception ) {
+    if ( jqxhr.status== 401 ) {
+      document.replace("https://app-dev.askdata.com/login")
+    }
+});
   </script>
 
 </body>
