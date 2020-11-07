@@ -27,7 +27,7 @@ function displayChart(data) {
         var item = data.resultSet.measures[i];
     
     // theme handling
-    if (theme) {
+    if (theme.length > 0) {
       item.color = theme.palette[i]
     } else {
       item.color = data.resultSet.color.palette[i];
