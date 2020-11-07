@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Askdata - Horizontal Bar Chart</title>
+<title>Askdata - Donut Chart</title>
 <!-- Beginning Include Header -->
 <!--# include virtual="/charts/askdata/_includes/header.html" -->
 <!-- End Include Header -->
@@ -19,29 +19,27 @@ function displayChart(data) {
 
     console.log(data);
 
-
     var MONTHS = [data.resultSet.dimension.labels];
     var color = Chart.helpers.color;
     var measures = [];
-    for(var i in data.resultSet.measures) {  
+    for(var i in data.resultSet.measures) {
         var item = data.resultSet.measures[i];
     
-    // theme handling
-    if (theme.length > 0) {
-      item.color = theme.palette[i]
-    } else {
-      item.color = data.resultSet.color.palette[i];
-      if (i==0) {item.color = data.resultSet.color.accent; }
-    }
+      // Theme handling
+      if (theme.length > 0) {
+        item.color = theme.palette[i]
+      } else {
+        item.color = data.resultSet.color.palette[i];
+        if (i==0) {item.color = data.resultSet.color.accent; }
+      }
     
-    measures.push({ 
-        "label" : item.name,
-        "data" : item.numericValues,
-        "backgroundColor": item.color,
-        "borderColor": item.color
-    });
+      measures.push({ 
+          "label" : item.name,
+          "data" : item.numericValues,
+          "backgroundColor": data.resultSet.color.palette
+      });
 
-}
+    }
 
     // Show legend if measures more than one
     var displayLegend = true

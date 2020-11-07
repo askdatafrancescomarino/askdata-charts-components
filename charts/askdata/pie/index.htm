@@ -1,54 +1,45 @@
 <!DOCTYPE html>
-<!-- saved from url=(0073)https://storage.googleapis.com/askdata-smartchart/prod/horizontal_bar.htm -->
-<html class="js-focus-visible" data-js-focus-visible="">
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-  <title>Askdata - Horizontal Bar Chart</title>
-  <!--# include virtual="/charts/askdata/_includes/header.html" -->
-</script>
+<title>Askdata - Pie Chart</title>
+<!-- Beginning Include Header -->
+<!--# include virtual="/charts/askdata/_includes/header.html" -->
+<!-- End Include Header -->
 </head>
-<body style="width: 100%;min-height: 600px">
-<div id="watermark"><img src="/lib/assets/askdata-logo.svg"></div>
+<body>
+<!-- Beginning Include Watermak -->
+<!--# include virtual="/charts/askdata/_includes/watermark.html" -->
+<!-- End Include Watermak -->
+
 <div id="container">
-<canvas id="canvas"></canvas></div>
+  <canvas id="canvas"></canvas></div>
 <script>
 
-  if (getUrlParameter('token') != undefined){
-  var token = getUrlParameter('token');
-  }else{
-  var token = Cookies.get('access_token')
-  }
+function displayChart(data) {
 
-$.ajax({
-         url: environment + "/charts/" + getUrlParameter('chartId'),
-         type: "GET",
-         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token
-          ).setRequestHeader('Content-Type','application/json')},
-         success: function(data) { 
-          
-          
-          console.log(data);
-          //var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-          var MONTHS = [data.resultSet.dimension.labels];
+    console.log(data);
+
+    var MONTHS = [data.resultSet.dimension.labels];
     var color = Chart.helpers.color;
-var measures = [];
-for(var i in data.resultSet.measures) {  
-    var item = data.resultSet.measures[i];
+    var measures = [];
+    for(var i in data.resultSet.measures) {
+        var item = data.resultSet.measures[i];
     
-    // Smarter chart
-    // TODO / to be removed Set accent color as the first color
-    //if (i==0) {item.color = data.resultSet.color.accent; }
-
+      // Theme handling
+      if (theme.length > 0) {
+        item.color = theme.palette[i]
+      } else {
+        item.color = data.resultSet.color.palette[i];
+        if (i==0) {item.color = data.resultSet.color.accent; }
+      }
     
-    measures.push({ 
-        "label" : item.name,
-        "data" : item.numericValues,
-        "backgroundColor": data.resultSet.color.palette,
-        
-        "borderWidth": 0
-    });
+      measures.push({ 
+          "label" : item.name,
+          "data" : item.numericValues,
+          "backgroundColor": data.resultSet.color.palette
+      });
 
-}
+    }
 
     // Show legend if measures more than one
     var displayLegend = true
@@ -74,9 +65,6 @@ for(var i in data.resultSet.measures) {
     var lebelNumberMeasurmenentUnit = null;
 
       var ctx = document.getElementById('canvas').getContext('2d');
-
-
-
       window.myHorizontalBar = new Chart(ctx, {
         type: 'pie',
         data: chartData,
@@ -103,10 +91,15 @@ for(var i in data.resultSet.measures) {
           }
         }
       });
-    
-  var colorNames = Object.keys(window.chartColors);
+    var colorNames = Object.keys(window.chartColors);
+
 }
-});  
-  </script>
+
+// Beinning include Request-data
+<!--# include virtual="/charts/askdata/_includes/request-data.js" -->
+// End include Request-data
+
+</script>
+
 </body>
 </html>
