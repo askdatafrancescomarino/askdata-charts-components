@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Askdata - Horizontal Bar Chart</title>
+<title>Askdata - Streamgraph</title>
 <!-- Beginning Include Header -->
 <!--# include virtual="/charts/askdata/_includes/header.html" -->
 <!-- End Include Header -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 </head>
 <body>
 <!-- Beginning Include Watermak -->
@@ -12,7 +14,8 @@
 <!-- End Include Watermak -->
 
 <div id="container">
-  <canvas id="canvas"></canvas></div>
+  <div id="my_dataviz"></div>
+</div>
 <script>
 
 function displayChart(data) {
