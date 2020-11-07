@@ -33,13 +33,13 @@ if (getUrlParameter('theme')) {
 
 }
 
-$.ajax({
-         url: environment + "/charts/" + getUrlParameter('chartId'),
-         type: "GET",
-         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token 
-          ).setRequestHeader('Content-Type','application/json')},
-         success: function(data) { 
+<!--# include virtual="/charts/askdata/_includes/data.html" -->
+
+function displayChart(data) {
+  
           console.log(data);
+
+
 
           var MONTHS = [data.resultSet.dimension.labels];
     var color = Chart.helpers.color;
@@ -123,13 +123,27 @@ for(var i in data.resultSet.measures) {
         }
       });
     var colorNames = Object.keys(window.chartColors);
+  
+}
+
+
+$.ajax({
+         url: environment + "/charts/" + getUrlParameter('chartId'),
+         type: "GET",
+         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token 
+          ).setRequestHeader('Content-Type','application/json')},
+         success: function(data) { 
+
+         displayChart(data);
+
 }
 });  
 
 
 $( document ).ajaxError(function( event, jqxhr, settings, exception ) {
     if ( jqxhr.status== 401 ) {
-      document.replace("https://app-dev.askdata.com/login")
+      location.replace("https://app-dev.askdata.com/login");
+
     }
 });
   </script>
