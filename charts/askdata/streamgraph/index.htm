@@ -73,8 +73,8 @@ var svg = d3.select("#my_dataviz")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-// Parse the Data
-d3.csvParse(prepareData(data), function(data) {
+  // Parse the Data
+  d3.csvParse(prepareData(data))
 
   // List of groups = header of the csv files
   var keys = data.columns.slice(1)
@@ -119,8 +119,6 @@ d3.csvParse(prepareData(data), function(data) {
         .y0(function(d) { return y(d[0]); })
         .y1(function(d) { return y(d[1]); })
     )
-
-})
 
 }
 
