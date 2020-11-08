@@ -75,7 +75,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv.parse(prepareData(data),function(data) {
+d3.csvParse(prepareData(data),function(data) {
 
   // List of groups = header of the csv files
   var keys = data.columns.slice(1)
@@ -95,7 +95,7 @@ d3.csv.parse(prepareData(data),function(data) {
   svg.append("g")
     .call(d3.axisLeft(y));
 
-    var defaultColors = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf'];
+    var defaultColors = ["266ff2","52c173","fa6410","707782","c76bc5","7ee8fa","ff5ca8","f9c8cd","ffc100","5b7cd7"]
 
   // color palette
   var color = d3.scaleOrdinal()
