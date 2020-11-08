@@ -18,13 +18,54 @@
 </div>
 <script>
 
+function prepareData(data) {
+
+  var str = 'year';
+
+  for (i in data.resultSet.dimension.labels) {
+
+      str += ','
+      str += data.resultSet.dimension.labels[i];
+
+  }
+
+  str += str + '\r\n'; 
+
+
+  for (i in data.resultSet.measures) {
+
+    var line = '' + i;
+    
+    for (var index in data.resultSet.measures[i].numericValues) {
+      
+      if (line != '') {line += ','}
+
+      if (data.resultSet.measures[i].numericValues[index]) {
+        line += data.resultSet.measures[i].numericValues[index];
+
+      } else {
+        line +='';
+      }
+
+    }
+
+    str += line + '\r\n';
+
+  }
+
+  console.log(str)
+  return str
+
+}
+
+
 function displayChart(data) {
 
     
     // set the dimensions and margins of the graph
 var margin = {top: 20, right: 30, bottom: 30, left: 60},
-    width = window.innerWidth; - margin.left - margin.right,
-    height = window.innerHeight; - margin.top - margin.bottom;
+    width = window.innerWidth - margin.left - margin.right,
+    height = window.innerHeight - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
@@ -36,7 +77,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/5_OneCatSevNumOrdered_wide.csv", function(data) {
+d3.parse(prepareData(data),function(data) {
 
   // List of groups = header of the csv files
   var keys = data.columns.slice(1)
