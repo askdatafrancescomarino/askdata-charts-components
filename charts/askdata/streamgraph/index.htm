@@ -58,9 +58,7 @@ function prepareData(data) {
 
 }
 
-
 function displayChart(data) {
-
     
     // set the dimensions and margins of the graph
 var margin = {top: 20, right: 30, bottom: 30, left: 60},
@@ -77,7 +75,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.parse(prepareData(data),function(data) {
+d3.csv.parse(prepareData(data),function(data) {
 
   // List of groups = header of the csv files
   var keys = data.columns.slice(1)
@@ -97,10 +95,12 @@ d3.parse(prepareData(data),function(data) {
   svg.append("g")
     .call(d3.axisLeft(y));
 
+    var defaultColors = ['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf'];
+
   // color palette
   var color = d3.scaleOrdinal()
     .domain(keys)
-    .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf'])
+    .range(defaultColors)
 
   //stack the data?
   var stackedData = d3.stack()
