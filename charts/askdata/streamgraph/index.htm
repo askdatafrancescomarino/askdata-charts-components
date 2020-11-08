@@ -31,7 +31,6 @@ function prepareData(data) {
 
   str += str + '\r\n'; 
 
-
   for (i in data.resultSet.measures) {
 
     var line = '' + i;
@@ -77,6 +76,8 @@ var svg = d3.select("#my_dataviz")
 // Parse the Data
 d3.csvParse(prepareData(data),function(data) {
 
+  console.log("parsed")
+  console.log(data)
   // List of groups = header of the csv files
   var keys = data.columns.slice(1)
 
