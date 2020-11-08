@@ -75,6 +75,7 @@ var svg = d3.select("#my_dataviz")
 
   // Parse the Data
   var data = d3.csvParse(prepareData(dataviz))
+  console.log(data)
 
   // List of groups = header of the csv files
   var keys = data.columns.slice(1)
