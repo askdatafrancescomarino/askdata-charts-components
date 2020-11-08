@@ -42,8 +42,9 @@ function prepareData(data) {
       if (data.resultSet.measures[i].numericValues[index]) {
         line += data.resultSet.measures[i].numericValues[index];
 
+      // Handle null values
       } else {
-        line +='';
+        line +='0';
       }
 
     }
@@ -52,7 +53,6 @@ function prepareData(data) {
 
   }
 
-  console.log(str)
   return str
 
 }
