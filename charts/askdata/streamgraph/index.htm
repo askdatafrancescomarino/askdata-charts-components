@@ -57,7 +57,7 @@ function prepareData(data) {
 
 }
 
-function displayChart(data) {
+function displayChart(dataviz) {
     
     // set the dimensions and margins of the graph
 var margin = {top: 20, right: 30, bottom: 30, left: 60},
@@ -74,7 +74,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
   // Parse the Data
-  d3.csvParse(prepareData(data))
+  var data = d3.csvParse(prepareData(dataviz))
 
   // List of groups = header of the csv files
   var keys = data.columns.slice(1)
