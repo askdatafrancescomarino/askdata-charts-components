@@ -6,34 +6,35 @@
 <!--# include virtual="/charts/askdata/_includes/header.html" -->
 <!-- End Include Header -->
 </head>
-<body onresize="resize()">
+<body>
 <!-- Beginning Include Watermak -->
 <!--# include virtual="/charts/askdata/_includes/watermark.html" -->
 <!-- End Include Watermak -->
+<style>
+  canvas{
 
-<div id="container" style="position: relative; height: 600px;width:1200px">
+  width:1000px !important;
+  height:600px !important;
+
+}
+</style>
+
+<div id="container">
   <canvas id="canvas"></canvas></div>
 <script>
 
-function calculateScreen() {
-  var w = window.innerWidth;
-  var h = w/2;
-  document.getElementById("container").style.width =  w + "px";
-  document.getElementById("container").style.height = h + "px";
-
-  document.getElementById("canvas").style.width =  w + "px!important";
-  document.getElementById("canvas").style.height = h + "px!important";
-
-}
-
-calculateScreen()
-
-function resize() {
-  calculateScreen();
-  window.myHorizontalBar.resize();
-}
 
 function displayChart(data) {
+
+  function calculateScreen() {
+    var w = window.innerWidth;
+    var h = w/2;
+    document.getElementById("container").style.width =  w + "px";
+    document.getElementById("container").style.height = h + "px";
+
+  }
+
+calculateScreen()
 
     console.log(data);
 
@@ -95,9 +96,9 @@ function displayChart(data) {
               borderWidth: 2,
             }
           },
-          responsive: false,
-          maintainAspectRatio:false,
-          legend: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
             display : displayLegend,
             position: 'top',
             align: 'center',
