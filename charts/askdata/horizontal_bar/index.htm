@@ -11,7 +11,7 @@
 <!--# include virtual="/charts/askdata/_includes/watermark.html" -->
 <!-- End Include Watermak -->
 
-<div id="container" style="position: relative">
+<div id="container" style="position: relative; height: 600px;width:1200px">
   <canvas id="canvas"></canvas></div>
 <script>
 
@@ -95,7 +95,7 @@ function displayChart(data) {
               borderWidth: 2,
             }
           },
-          responsive: true,
+          responsive: false,
           maintainAspectRatio:false,
           legend: {
             display : displayLegend,
