@@ -6,7 +6,7 @@
 <!--# include virtual="/charts/askdata/_includes/header.html" -->
 <!-- End Include Header -->
 </head>
-<body>
+<body onresize="resize()">
 <!-- Beginning Include Watermak -->
 <!--# include virtual="/charts/askdata/_includes/watermark.html" -->
 <!-- End Include Watermak -->
@@ -21,9 +21,17 @@ function calculateScreen() {
   document.getElementById("container").style.width =  w + "px";
   document.getElementById("container").style.height = h + "px";
 
+  document.getElementById("canvas").style.width =  w + "px!important";
+  document.getElementById("canvas").style.height = h + "px!important";
+
 }
 
 calculateScreen()
+
+function resize() {
+  calculateScreen();
+  window.myHorizontalBar.reize();
+}
 
 function displayChart(data) {
 
