@@ -13,8 +13,8 @@
 <style>
   canvas{
 
-  width:1000px !important;
-  height:600px !important;
+  width:1440px !important;
+  height:720px !important;
 
 }
 </style>
@@ -29,12 +29,12 @@ function displayChart(data) {
   function calculateScreen() {
     var w = window.innerWidth;
     var h = w/2;
-    document.getElementById("container").style.width =  w + "px";
-    document.getElementById("container").style.height = h + "px";
-
+    document.getElementById("container").style.width =  w + "px !important";
+    document.getElementById("container").style.height = h + "px !important";
+    
   }
 
-calculateScreen()
+  calculateScreen()
 
     console.log(data);
 
