@@ -11,12 +11,10 @@
 <!--# include virtual="/charts/askdata/_includes/watermark.html" -->
 <!-- End Include Watermak -->
 <style>
-  canvas{
-
-  width:1440px !important;
-  height:720px !important;
-
+#container {
+  background-color: #f8fafe;
 }
+
 </style>
 
 <div id="container">
@@ -31,7 +29,7 @@ function displayChart(data) {
     var h = w/2;
     document.getElementById("container").style.width =  w + "px !important";
     document.getElementById("container").style.height = h + "px !important";
-    
+
   }
 
   calculateScreen()
