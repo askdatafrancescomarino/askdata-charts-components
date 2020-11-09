@@ -39,6 +39,10 @@ pipelines:
           - kubectl config use-context $ASKDATA_CONTEXT
           #Update the deployment to use the new Docker image
           - kubectl set image deployment/$DEPLOYMENT_NEW $CONTAINER_NEW=$IMAGE_NAME_NEW -n $NAMESPACE_NEW
+        services:
+          - docker
+        caches:
+          - docker          
     - step:        
         name: promote to qa
         deployment: qa
