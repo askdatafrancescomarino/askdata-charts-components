@@ -31,7 +31,6 @@ function displayChart(data) {
     
     // theme handling
     if (theme.length > 0) {
-      console.log("set theme")
       item.color = theme.palette[i]
     } else {
       item.color = data.resultSet.color.palette[i];
@@ -45,10 +44,10 @@ function displayChart(data) {
         "borderColor": item.color
     });
 
-    }
+}
 
     // Show legend if measures more than one
-    var displayLegend = true;
+    var displayLegend = true
     
     if (measures.length == 1) {
       displayLegend = false;
@@ -107,6 +106,7 @@ function displayChart(data) {
         }
       });
     var colorNames = Object.keys(window.chartColors);
+
 }
 
 // Beinning include Request-data
