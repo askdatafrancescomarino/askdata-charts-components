@@ -17,8 +17,12 @@
 
 function displayChart(data) {
 
-    console.log(data);
+  // Beinning include prepare-layout
+<!--# include virtual="/charts/askdata/_includes/prepare-layout.js" -->
+// End include prepare-layout
 
+
+    console.log(data);
 
     var MONTHS = [data.resultSet.dimension.labels];
     var color = Chart.helpers.color;
