@@ -30,7 +30,7 @@ function displayChart(data) {
         var item = data.resultSet.measures[i];
     
     // theme handling
-    if (window.theme.length > 0) {
+    if (window.theme.palette) {
       console.log("set theme")
       item.color = window.theme.palette[i]
     } else {
