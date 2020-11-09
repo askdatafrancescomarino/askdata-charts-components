@@ -170,3 +170,7 @@ a.chart_description{
   margin-right: auto;
   margin-left: auto;
 }
+
+#container {
+  background-color: #f8fafe;
+}
