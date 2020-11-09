@@ -30,13 +30,12 @@ calculateScreen()
 
 function resize() {
   calculateScreen();
-  window.myHorizontalBar.reize();
+  window.myHorizontalBar.resize();
 }
 
 function displayChart(data) {
 
     console.log(data);
-
 
     var MONTHS = [data.resultSet.dimension.labels];
     var color = Chart.helpers.color;
@@ -96,9 +95,8 @@ function displayChart(data) {
               borderWidth: 2,
             }
           },
-          responsive: false,
+          responsive: true,
           maintainAspectRatio:false,
-          aspectRatio : 2,
           legend: {
             display : displayLegend,
             position: 'top',
