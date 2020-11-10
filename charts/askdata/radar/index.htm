@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Askdata - Horizontal Bar Chart</title>
+<title>Askdata - Radar Chart</title>
 <!-- Beginning Include Header -->
 <!--# include virtual="/charts/askdata/_includes/header.html" -->
 <!-- End Include Header -->
@@ -40,7 +40,6 @@ function displayChart(data) {
     measures.push({ 
         "label" : item.name,
         "data" : item.numericValues,
-        "backgroundColor": item.color,
         "borderColor": item.color
     });
 
@@ -90,13 +89,6 @@ function displayChart(data) {
             fontSize:30,
             padding: 5,
           },
-          scales: {
-
-                        yAxes: [{ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily}}],
-                        xAxes: [{ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily,callback: function(value, index, values) {
-                        return new Intl.NumberFormat(labelNumberLocale).format(parseFloat(value).toFixed(labelNumberRoundTo));
-                    }}}]
-                    },
           title: {
             display: true,
             text: data.title,
