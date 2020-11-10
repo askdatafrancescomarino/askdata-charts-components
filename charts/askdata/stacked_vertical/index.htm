@@ -31,9 +31,10 @@ function displayChart(data) {
     for(var i in data.resultSet.measures) {  
         var item = data.resultSet.measures[i];
     
-    // theme handling
-    if (theme.length > 0) {
-      item.color = theme.palette[i]
+   // theme handling
+    if (window.theme.palette) {
+      console.log("set theme")
+      item.color = window.theme.palette[i]
     } else {
       item.color = data.resultSet.color.palette[i];
       if (i==0) {item.color = data.resultSet.color.accent; }
