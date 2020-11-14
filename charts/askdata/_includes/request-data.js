@@ -10,7 +10,7 @@ var theme = []
 // Retrieve theme
 if (getUrlParameter('theme')) {
 
-    $.getJSON( "https://chart-dev.askdata.com/charts/immuni-app/catalog.json", function( data ) {
+    $.getJSON( "https://chart-dev.askdata.com/charts/"+getUrlParameter('theme')+"/catalog.json", function( data ) {
       
       console.log("retrieving theme")
       console.log(data)
@@ -18,6 +18,15 @@ if (getUrlParameter('theme')) {
       window.theme = data;
 
   })
+
+} else {
+
+      $.getJSON( "https://chart-dev.askdata.com/charts/askdata/catalog.json", function( data ) {
+      
+      console.log("retrieving theme")
+      console.log(data)
+      
+      window.theme = data;
 
 }
 

@@ -72,5 +72,7 @@
 			"icon" : "_lib/icons/IcoChartStreamgraph.png"
 		}
 	],
-	"base_url": "/charts/askdata"
+	"base_url": "/charts/askdata",
+	"palette" : ["#266ff2","#52c173","#fa6410","#707782","#c76bc5","#7ee8fa","#ff5ca8","#f9c8cd","#ffc100","#5b7cd7"]
+
 }

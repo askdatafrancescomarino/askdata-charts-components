@@ -35,9 +35,8 @@ function displayChart(data) {
     for (let i = 0; i < item.numericValues.length; i++) {
 
       if(typeof item.numericValues[i] != 'number'){ 
-        item.numericValues[i] = parseNumber(item.numericValues[i]);
+        console.log("Warning: numericValues Not numeric!")
       }
-
     }
     
     measures.push({ 
