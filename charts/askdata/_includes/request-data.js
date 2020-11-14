@@ -1,3 +1,12 @@
+function parseNumber(value, locales = navigator.languages) {
+  const example = Intl.NumberFormat(locales).format('1.1');
+  const cleanPattern = new RegExp(`[^-+0-9${ example.charAt( 1 ) }]`, 'g');
+  const cleaned = value.replace(cleanPattern, '');
+  const normalized = cleaned.replace(example.charAt(1), '.');
+
+  return parseFloat(normalized);
+}
+
 // Retrieve auth token
 if (getUrlParameter('token') != undefined){
   var token = getUrlParameter('token');
