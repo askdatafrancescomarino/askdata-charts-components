@@ -94,7 +94,12 @@ function displayChart(data) {
             text: data.title,
             fontSize: 30,
             fontStyle:'normal'
-          }
+          },
+          elements: {
+                        line: {
+                                fill: false
+                        }
+              }
         }
       });
     var colorNames = Object.keys(window.chartColors);
