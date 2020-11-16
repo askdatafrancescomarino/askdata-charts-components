@@ -6,64 +6,73 @@
 			"name" : "Horizontal Bar",
 			"description" : "Horizontal Bar",
 			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar",
-			"icon" : "_icons/IcoChartHorBar.png"
+			"icon" : "_lib/icons/IcoChartHorBar.png"
 		},
 		{
 			"code": "donut", 
 			"name" : "Donut Chart",
 			"description" : "Donut Chart",
 			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
-			"icon" : "_icons/IcoChartDonut.png"
+			"icon" : "_lib/icons/IcoChartDonut.png"
 		},
 		{
 			"code": "line", 
 			"name" : "Line Chart",
 			"description" : "Line Chart",
 			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
-			"icon" : "_icons/IcoChartLine.png"
+			"icon" : "_lib/icons/IcoChartLine.png"
 		},
 		{
 			"code": "stacked_area", 
 			"name" : "Stacked Area",
 			"description" : "Stacked Area",
 			"doc" : "https://docs.askdata.com/docs/chart-stacked-area", 
-			"icon" : "_icons/IcoChartStackedArea.png"
+			"icon" : "_lib/icons/IcoChartStackedArea.png"
 		},
 		{
 			"code": "pie", 
 			"name" : "Pie Chart",
 			"description" : "Pie Chart",
 			"doc" : "https://docs.askdata.com/docs/chart-pie-chart", 
-			"icon" : "_icons/IcoChartPie.png"
+			"icon" : "_lib/icons/IcoChartPie.png"
 		},
 		{
 			"code": "stacked_horizontal", 
 			"name" : "Stacked Horizontal",
 			"description" : "Stacked Horizontal",
 			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
-			"icon" : "_icons/IcoChartStackedHor.png"
+			"icon" : "_lib/icons/IcoChartStackedHor.png"
 		},
 		{
 			"code": "vertical_bar", 
 			"name" : "Vertical Bar",
 			"description" : "Vertical Bar",
 			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
-			"icon" : "_icons/IcoChartVertBar.png"
+			"icon" : "_lib/icons/IcoChartVertBar.png"
 		},
 		{
 			"code": "stacked_vertical", 
 			"name" : "Stacked Vertical",
 			"description" : "Stacked Vertical Bar",
 			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
-			"icon" : "_icons/IcoChartStackedVert.png"
+			"icon" : "_lib/icons/IcoChartStackedVert.png"
+		},
+		{
+			"code": "radar", 
+			"name" : "Radar Chart",
+			"description" : "Radar Chart",
+			"doc" : "https://docs.askdata.com/docs/chart-radar", 
+			"icon" : "_lib/icons/IcoChartStackedVert.png"
 		},
 		{
 			"code": "streamgraph", 
 			"name" : "Stream Graph",
 			"description" : "Stream Graph",
 			"doc" : "https://docs.askdata.com/docs/chart-horizontal-bar", 
-			"icon" : "_icons/IcoChartStreamgraph.png"
+			"icon" : "_lib/icons/IcoChartStreamgraph.png"
 		}
 	],
-	"base_url": "/charts/askdata"
+	"base_url": "/charts/askdata",
+	"palette" : ["#266ff2","#52c173","#fa6410","#707782","#c76bc5","#7ee8fa","#ff5ca8","#f9c8cd","#ffc100","#5b7cd7","#90b1f2","#a5d9b7","#f0a782","#adb0b6","#ddb4de","#d4f3fb","#f7b5d7","#fcf2f4","#f4da8e","#abbbe6"]
+
 }

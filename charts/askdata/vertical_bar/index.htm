@@ -17,7 +17,7 @@
 
 function displayChart(data) {
 
-  // Beinning include prepare-layout
+// Beinning include prepare-layout
 <!--# include virtual="/charts/askdata/_includes/prepare-layout.js" -->
 // End include prepare-layout
 
@@ -94,10 +94,10 @@ function displayChart(data) {
           },
           scales: {
 
-                        yAxes: [{ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily}}],
-                        xAxes: [{ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily,callback: function(value, index, values) {
+                        yAxes: [{ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily,callback: function(value, index, values) {
                         return new Intl.NumberFormat(labelNumberLocale).format(parseFloat(value).toFixed(labelNumberRoundTo));
-                    }}}]
+                    }}}],
+                        xAxes: [{ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily}}]
                     },
           title: {
             display: true,
