@@ -33,7 +33,7 @@ if (getUrlParameter('theme')) {
 
 // Request charting data
 $.ajax({
-         url: environment + "/charts/" + getUrlParameter('chartId'),
+         url: "smart" + environment + "/charts/" + getUrlParameter('chartId'),
          type: "GET",
          beforeSend: function(xhr){xhr.setRequestHeader('Authorization', 'Bearer ' + token 
           ).setRequestHeader('Content-Type','application/json')},
