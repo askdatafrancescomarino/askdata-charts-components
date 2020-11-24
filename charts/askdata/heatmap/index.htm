@@ -155,7 +155,7 @@ function displayChart(dataviz) {
 
     svg.call(tip);
 
-d3.csv("data.csv", format, function(error, data){
+  var data = d3.csv("data.csv", format)
 
   var color = d3.scale.quantile()
                   .domain([-0.05, 0.105])
@@ -163,7 +163,7 @@ d3.csv("data.csv", format, function(error, data){
 
   // Create the heatmap visualization
   var viz = svg.selectAll(".correlation")
-              .data(data)
+              .data(dataviz)
               .enter().append("rect")
                   .attr("class", "correlation")
                   .attr("x", function(d, i) {return gridSize * Math.floor(i / categories) ; })
@@ -205,8 +205,6 @@ d3.csv("data.csv", format, function(error, data){
           .call(yAxis)
           .selectAll("text")
               .style("text-anchor", "end");
-
-	});
 
 }
 
