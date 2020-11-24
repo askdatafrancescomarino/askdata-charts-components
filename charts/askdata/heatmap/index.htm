@@ -69,7 +69,12 @@ rect {
 
 </head>
 <body>
-<svg id="chart"></svg>
+<!-- Beginning Include Watermak -->
+<!--# include virtual="/charts/askdata/_includes/watermark.html" -->
+<!-- End Include Watermak -->
+<div id="container">
+	<svg id="chart"></svg>
+</div>
 <script type="text/javascript">
 
     //Look and Feel
@@ -81,6 +86,9 @@ rect {
         categories_second_dimension = 17,
         gridSize = width / categories,
         colors = ['rgb(84,48,5)','rgb(140,81,10)','rgb(191,129,45)','rgb(223,194,125)','rgb(246,232,195)','rgb(245,245,245)','rgb(199,234,229)','rgb(128,205,193)','rgb(53,151,143)','rgb(1,102,94)','rgb(0,60,48)'];
+
+
+    var chartMargin = ((window.innerWidth - width) / 2) - 100;
 
     //Settings
     var xScale = d3.scale.ordinal().rangeBands([0, width]);
@@ -94,6 +102,7 @@ function displayChart(dataviz) {
     var svg = d3.select("#chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
+        .attr("style","margin-left:"+chartMargin+"px")
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
