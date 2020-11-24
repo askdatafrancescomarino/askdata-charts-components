@@ -18,7 +18,7 @@
 </div>
 <script>
 
-function prepareData(data) {
+function prepareData(data, replace_null) {
 
   var str = 'year';
 
@@ -40,8 +40,15 @@ function prepareData(data) {
       if (line != '') {line += ','}
 
       if (data.resultSet.measures[i].numericValues[index]) {
-        line += data.resultSet.measures[i].numericValues[index];
+        
+        // Replace null value with the input
+        if (replace_null && (typeof data.resultSet.measures[i].numericValues[index] !== 'undefined')) {
+          line += '' + replace_null
+        } else {
+          line += data.resultSet.measures[i].numericValues[index];
 
+        }
+        
       // Handle null values
       } else {
         line +='0';
@@ -55,6 +62,10 @@ function prepareData(data) {
 
   return str
 
+}
+
+function prepareData(data) {
+  prepareData(data, false)
 }
 
 function displayChart(dataviz) {
@@ -74,7 +85,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
   // Parse the Data
-  var data = d3.csvParse(prepareData(dataviz))
+  var data = d3.csvParse(prepareData(dataviz,"0"))
   console.log(data)
 
   // List of groups = header of the csv files
