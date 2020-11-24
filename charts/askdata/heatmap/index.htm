@@ -77,7 +77,47 @@ rect {
 </div>
 <script type="text/javascript">
 
-    //Look and Feel
+function prepareData(data, replace_null) {
+
+  var str = 'year';
+
+  for (i in data.resultSet.dimension.labels) {
+
+      str += ','
+      str += data.resultSet.dimension.labels[i];
+
+  }
+
+  str += '\n'; 
+
+  for (i in data.resultSet.measures) {
+
+    var line = '' + i;
+    
+    for (var index in data.resultSet.measures[i].numericValues) {
+      
+      if (line != '') {line += ','}
+        
+        // Replace null value with the input
+        if (replace_null && (typeof data.resultSet.measures[i].numericValues[index] == 'undefined') || (data.resultSet.measures[i].numericValues[index] == null)) {
+          line += '' + replace_null
+        } else {
+          line += data.resultSet.measures[i].numericValues[index];
+        }
+
+    }
+
+    str += line + '\n';
+
+  }
+
+  return str
+
+}
+
+function displayChart(dataviz) {
+
+	//Look and Feel
     var margin = { top: 100, right: 50, bottom: 50, left: 100 },
         dim = Math.min(parseInt(d3.select("#chart").style("width")), parseInt(d3.select("#chart").style("height"))),
        	width = dim - margin.left - margin.right,
@@ -85,6 +125,7 @@ rect {
         categories = 17,
         categories_second_dimension = 17,
         gridSize = width / categories,
+        gridSize_second_dimension = width / categories_second_dimension,
         colors = ['rgb(84,48,5)','rgb(140,81,10)','rgb(191,129,45)','rgb(223,194,125)','rgb(246,232,195)','rgb(245,245,245)','rgb(199,234,229)','rgb(128,205,193)','rgb(53,151,143)','rgb(1,102,94)','rgb(0,60,48)'];
 
 
@@ -95,8 +136,6 @@ rect {
     var yScale = d3.scale.ordinal().rangeBands([0, height]);
     var xAxis = d3.svg.axis().orient("top");
     var yAxis = d3.svg.axis().orient("left");
-
-function displayChart(dataviz) {
 
     // Create the svg canvas
     var svg = d3.select("#chart")
@@ -128,9 +167,9 @@ d3.csv("data.csv", format, function(error, data){
               .enter().append("rect")
                   .attr("class", "correlation")
                   .attr("x", function(d, i) {return gridSize * Math.floor(i / categories) ; })
-                  .attr("y", function(d, i) {return gridSize * (i % categories) ; })
+                  .attr("y", function(d, i) {return gridSize_second_dimension * (i % categories) ; })
                   .attr("width",gridSize)
-                  .attr("height", gridSize)
+                  .attr("height", gridSize_second_dimension)
                   .style("fill", function(d){return color(d.value) ; })
                   .on('mouseover', tip.show)
                   .on('mouseout', tip.hide);
@@ -171,42 +210,10 @@ d3.csv("data.csv", format, function(error, data){
 
 }
 
-function resize() {
-
-  var dim = Math.min(parseInt(d3.select("#chart").style("width")), parseInt(d3.select("#chart").style("height"))),
-  width = dim - margin.left - margin.right,
-  height = dim - margin.top - margin.bottom;
-
-  gridSize = width / 17;
-
-  // Update the range of the scale with new width/height
-  xScale.rangeBands([0, width]);
-  yScale.rangeBands([0, height]);
-
-  // Update the axis and text with the new scale
-  svg.select('.x.axis')
-    .call(xAxis)
-    .selectAll("text")
-        .attr("y", -10)
-        .attr("dy", ".5em")
-        .attr("x", 0)
-        .attr("transform", "rotate(-45)")
-        .style("text-anchor", "start")
-
-  svg.select('.y.axis')
-    .call(yAxis);
-
-  svg.selectAll('.correlation')
-    .attr("x", function(d, i) {return gridSize * Math.floor( i / categories ) ;})
-    .attr("y", function(d, i) {return gridSize * ( i % categories );})
-    .attr("width",gridSize)
-    .attr("height", gridSize);
+function format(d) {
+  d.value = +d.value;
+  return d;
 }
-
-	function format(d) {
-	  d.value = +d.value;
-	  return d;
-	}
 
 // Beinning include Request-data
 <!--# include virtual="/charts/askdata/_includes/request-data.js" -->
