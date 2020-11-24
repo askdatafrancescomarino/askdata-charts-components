@@ -5,7 +5,11 @@
 <!-- Beginning Include Header -->
 <!--# include virtual="/charts/askdata/_includes/header.html" -->
 <!-- End Include Header -->
-	<style>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
+
+<style>
 
 rect {
         stroke: #E6E6E6;
@@ -63,8 +67,6 @@ rect {
 
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
 </head>
 <body>
 <svg id="chart"></svg>
@@ -76,6 +78,7 @@ rect {
         height = dim - margin.top - margin.bottom,
         categories = 17,
         gridSize = width / categories,
+        
         colors = ['rgb(84,48,5)','rgb(140,81,10)','rgb(191,129,45)','rgb(223,194,125)','rgb(246,232,195)','rgb(245,245,245)','rgb(199,234,229)','rgb(128,205,193)','rgb(53,151,143)','rgb(1,102,94)','rgb(0,60,48)'];
 
     var xScale = d3.scale.ordinal().rangeBands([0, width]);
@@ -100,7 +103,7 @@ rect {
 
     svg.call(tip);
 
-d3.csv("correlationCoefficients.csv", format, function(error, data){
+d3.csv("data.csv", format, function(error, data){
 
   var color = d3.scale.quantile()
                   .domain([-0.05, 0.105])
