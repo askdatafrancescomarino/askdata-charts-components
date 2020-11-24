@@ -30,7 +30,7 @@ function prepareData(data, replace_null) {
 
   }
 
-  str += str + '\n'; 
+  str += '\n'; 
 
   for (i in data.resultSet.measures) {
 
@@ -39,21 +39,13 @@ function prepareData(data, replace_null) {
     for (var index in data.resultSet.measures[i].numericValues) {
       
       if (line != '') {line += ','}
-
-      if (data.resultSet.measures[i].numericValues[index]) {
         
         // Replace null value with the input
-        if (replace_null && (typeof data.resultSet.measures[i].numericValues[index] !== 'undefined')) {
+        if (replace_null && (typeof data.resultSet.measures[i].numericValues[index] == 'undefined') || (data.resultSet.measures[i].numericValues[index] == null)) {
           line += '' + replace_null
         } else {
           line += data.resultSet.measures[i].numericValues[index];
-
         }
-        
-      // Handle null values
-      } else {
-        line +='0';
-      }
 
     }
 
