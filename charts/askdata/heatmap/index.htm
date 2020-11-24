@@ -60,8 +60,8 @@ rect {
 #chart {
   width: 100%;
   height: 100%;
-  min-width: 500px;
-  min-height: 500px;
+  min-width: 300px;
+  min-height: 300px;
   position: absolute;
 }
 
@@ -72,22 +72,23 @@ rect {
 <svg id="chart"></svg>
 <script type="text/javascript">
 
+    //Look and Feel
     var margin = { top: 100, right: 50, bottom: 50, left: 100 },
         dim = Math.min(parseInt(d3.select("#chart").style("width")), parseInt(d3.select("#chart").style("height"))),
-        width = window.innerWidth - margin.left - margin.right,
-        height = window.innerHeight - margin.top - margin.bottom,
+       	width = dim - margin.left - margin.right,
+        height = dim - margin.top - margin.bottom,
         categories = 17,
         categories_second_dimension = 17,
         gridSize = width / categories,
         colors = ['rgb(84,48,5)','rgb(140,81,10)','rgb(191,129,45)','rgb(223,194,125)','rgb(246,232,195)','rgb(245,245,245)','rgb(199,234,229)','rgb(128,205,193)','rgb(53,151,143)','rgb(1,102,94)','rgb(0,60,48)'];
 
-function displayChart(dataviz) {
-
-
+    //Settings
     var xScale = d3.scale.ordinal().rangeBands([0, width]);
     var yScale = d3.scale.ordinal().rangeBands([0, height]);
     var xAxis = d3.svg.axis().orient("top");
     var yAxis = d3.svg.axis().orient("left");
+
+function displayChart(dataviz) {
 
     // Create the svg canvas
     var svg = d3.select("#chart")
@@ -202,7 +203,7 @@ function resize() {
 <!--# include virtual="/charts/askdata/_includes/request-data.js" -->
 // End include Request-data
 
-	d3.select(window).on('resize', resize);
+	//d3.select(window).on('resize', resize);
 
 </script>
 </body>
