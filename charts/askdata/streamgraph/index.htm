@@ -82,7 +82,10 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
   // Parse the Data
+  console.log("before transformation")
+  console.log(dataviz)
   var data = d3.csvParse(prepareData(dataviz,"0"))
+  console.log("after transformation")
   console.log(data)
 
   // List of groups = header of the csv files
