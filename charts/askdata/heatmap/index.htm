@@ -72,11 +72,14 @@ rect {
 <svg id="chart"></svg>
 <script type="text/javascript">
 
+function displayChart(dataviz) {
+
     var margin = { top: 100, right: 50, bottom: 50, left: 100 },
         dim = Math.min(parseInt(d3.select("#chart").style("width")), parseInt(d3.select("#chart").style("height")))
-        width = dim - margin.left - margin.right,
-        height = dim - margin.top - margin.bottom,
+        width = window.innerWidth - margin.left - margin.right,
+        height = window.innerHeight - margin.top - margin.bottom;
         categories = 17,
+        categories_second_dimension = 17,
         gridSize = width / categories,
         
         colors = ['rgb(84,48,5)','rgb(140,81,10)','rgb(191,129,45)','rgb(223,194,125)','rgb(246,232,195)','rgb(245,245,245)','rgb(199,234,229)','rgb(128,205,193)','rgb(53,151,143)','rgb(1,102,94)','rgb(0,60,48)'];
@@ -154,7 +157,9 @@ d3.csv("data.csv", format, function(error, data){
           .selectAll("text")
               .style("text-anchor", "end");
 
-});
+	});
+
+}
 
 function resize() {
 
@@ -188,14 +193,18 @@ function resize() {
     .attr("height", gridSize);
 }
 
-d3.select(window).on('resize', resize);
+	function format(d) {
+	  d.value = +d.value;
+	  return d;
+	}
 
-resize();
+// Beinning include Request-data
+<!--# include virtual="/charts/askdata/_includes/request-data.js" -->
+// End include Request-data
 
-function format(d) {
-  d.value = +d.value;
-  return d;
-}
+	d3.select(window).on('resize', resize);
+
+	resize();
 
 </script>
 </body>
