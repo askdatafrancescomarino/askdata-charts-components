@@ -18,6 +18,7 @@
 </div>
 <script>
 
+// Function that transform reponse valid for the D3 parse CVS call
 function prepareData(data, replace_null) {
 
   var str = 'year';
@@ -62,10 +63,6 @@ function prepareData(data, replace_null) {
 
   return str
 
-}
-
-function prepareData(data) {
-  prepareData(data, false)
 }
 
 function displayChart(dataviz) {
