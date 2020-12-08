@@ -22,6 +22,7 @@
 </style>
 </head>
 <body style="margin:0!important;padding:0!important">
+<iframe style="position:absolute;top:228px;left:50px;border:0;width:1100px;height: 550px;border-radius: 10px" src="https://chart-dev.askdata.com/charts/askdata/horizontal_bar/index.htm?chartId=5fa032b053ceb555c449ebc7"></iframe>
 <!-- Beginning Include Watermak -->
 <!--# include virtual="/charts/askdata/_includes/watermark.html" -->
 <!-- End Include Watermak -->
@@ -35,9 +36,9 @@
 <rect x="24" y="24" width="1152" height="781" rx="16" fill="white"/>
 <rect x="24.5" y="24.5" width="1151" height="780" rx="15.5" stroke="url(#paint0_linear)"/>
 </g>
-<text fill="#707782" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="29" font-weight="500" letter-spacing="0em"><tspan x="71" y="177.912">{{text}}</tspan></text>
-<text fill="#252E36" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="53" font-weight="900" letter-spacing="0em"><tspan x="71" y="108.615">{{title}}</tspan></text>
-<g opacity="0.8" filter="url(#filter1_d)">
+<text fill="#707782" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="29" font-weight="500" letter-spacing="0em"><tspan x="71" y="177.912" id="text">{{text}}</tspan></text>
+<text fill="#252E36" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="53" font-weight="900" letter-spacing="0em"><tspan x="71" y="108.615" id="title">{{title}}</tspan></text>
+<g opacity="1" filter="url(#filter1_d)">
 <rect x="48" y="228" width="1104" height="559" rx="16" fill="white"/>
 <rect x="48.5" y="228.5" width="1103" height="558" rx="15.5" stroke="#E9F2FF"/>
 </g>
@@ -167,6 +168,9 @@ function displayChart(data) {
 // End include prepare-layout
 
     console.log(data);
+
+    document.getElementById('title').innerHTML = data.title
+    document.getElementById('text').innerHTML = "This chart contains data about " + data.title
 
     var color = Chart.helpers.color;
     var measures = [];
