@@ -37,7 +37,7 @@
 <rect x="24.5" y="24.5" width="1151" height="780" rx="15.5" stroke="url(#paint0_linear)"/>
 </g>
 <text fill="#707782" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="29" font-weight="500" letter-spacing="0em"><tspan x="71" y="177.912" id="text">{{text}}</tspan></text>
-<text fill="#252E36" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="53" font-weight="900" letter-spacing="0em"><tspan x="71" y="108.615" id="title">{{title}}</tspan></text>
+<text fill="#252E36" xml:space="preserve" style="white-space: pre" font-family="Roboto" font-size="53" font-weight="900" letter-spacing="0em"><tspan x="71" y="108.615" id="title_card">{{title}}</tspan></text>
 <g opacity="1" filter="url(#filter1_d)">
 <rect x="48" y="228" width="1104" height="559" rx="16" fill="white"/>
 <rect x="48.5" y="228.5" width="1103" height="558" rx="15.5" stroke="#E9F2FF"/>
@@ -169,8 +169,17 @@ function displayChart(data) {
 
     console.log(data);
 
-    document.getElementById('title').innerHTML = data.title
-    document.getElementById('text').innerHTML = "This chart contains data about " + data.title
+    if (getUrlParameter('title')) {
+    	document.getElementById('title_card').innerHTML = getUrlParameter('title')
+    } else {
+    	document.getElementById('title_card').innerHTML = data.title
+    }
+
+    if (getUrlParameter('text')) {
+    	document.getElementById('text').innerHTML = getUrlParameter('text')
+    } else {
+    	document.getElementById('text').innerHTML = "This chart contains data about " + data.title
+    }
 
     var color = Chart.helpers.color;
     var measures = [];
