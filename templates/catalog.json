@@ -1,0 +1,17 @@
+{	
+	"templates": 
+	[
+		{
+			"code":"card_with_2_circles", 
+			"name" : "Card with 2 KPIs",
+			"variables" : ["Horizontal Bar"],
+			"preview" : "card_with_2_circles.png"
+		},
+		{
+			"code": "card_with_6_kpis", 
+			"name" : "Card with 6 KPIs",
+			"description" : "Donut Chart",
+			"variables" : ["Horizontal Bar"],
+			"preview" : "card_with_6_kpis.png"
+}]
+}
