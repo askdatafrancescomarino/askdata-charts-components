@@ -1,5 +1,5 @@
 {	
-	"templates": 
+	"widget": 
 	[
 		{
 			"code":"card_with_2_circles", 
@@ -13,5 +13,5 @@
 			"description" : "Donut Chart",
 			"variables" : ["{{variable1}}", "{{variable2}}"],
 			"preview" : "card_with_6_kpis.png"
-}]
+}], "background-color" : "#CCCCCC"
 }
