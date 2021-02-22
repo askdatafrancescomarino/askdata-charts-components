@@ -2,6 +2,13 @@
 	"widget": 
 	[
 		{
+			"code":"soccer_match_radar_chart", 
+			"name" : "Soccer Match with Radar Chart",
+			"variables" : ["{{variable1}}",
+			 "{{variable2}}"],
+			"preview" : "card_with_2_circles.png"
+		},
+		{
 			"code":"card_with_2_circles", 
 			"name" : "Card with 2 KPIs",
 			"variables" : ["{{variable1}}", "{{variable2}}"],
