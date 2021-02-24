@@ -93,7 +93,7 @@ function displayChart(data) {
           title: {
             display: true,
             text: data.title,
-            fontSize: 30,
+            fontSize: titleSize(data.title),
             fontStyle:'normal'
           },
           yAxes: [{stacked: true, ticks: {fontSize: labelFontSize, fontFamily: labelFontFamily}}],

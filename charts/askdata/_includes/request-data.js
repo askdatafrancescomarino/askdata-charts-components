@@ -47,7 +47,7 @@ $.ajax({
 // Redirect to login if not authenticated 
 $( document ).ajaxError(function( event, jqxhr, settings, exception ) {
     if ( jqxhr.status== 401 ) {
-      location.replace("https://app-dev.askdata.com/login");
+      location.replace(environment_auth+"/login");
 
     }
 });
