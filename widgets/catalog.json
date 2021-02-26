@@ -7,14 +7,14 @@
 			"variables" : ["{{variable1}}",
 			 "{{variable2}}"],
 			"icon" : "card_with_2_circles.png",
-			"description": "description 1",
+			"description": "description 1"
 		},
 		{
 			"code":"card_with_2_circles", 
 			"name" : "Card with 2 KPIs",
 			"variables" : ["{{variable1}}", "{{variable2}}"],
 			"icon" : "card_with_2_circles.png",
-			"description": "description 2",
+			"description": "description 2"
 		},
 		{
 			"code": "card_with_6_kpis", 
