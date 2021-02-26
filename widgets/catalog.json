@@ -21,7 +21,6 @@
 			"name" : "Card with 6 KPIs",
 			"description" : "Donut Chart",
 			"variables" : ["{{variable1}}", "{{variable2}}"],
-			"icon" : "card_with_6_kpis.png",
-			"description": "description 3",
+			"icon" : "card_with_6_kpis.png"
 }], "background-color" : "#CCCCCC"
 }
